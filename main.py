@@ -36,8 +36,7 @@ snake_body = [[100, 50],
               ]
 # fruit position
 fruit_position = [random.randrange(1, (window_x//10)) * 10,
-                  random.randrange(1, (window_y//10)) * 10]
- 
+                  random.randrange(1, (window_y//10)) * 10] 
 fruit_spawn = True
  
 # setting default snake direction towards
@@ -96,7 +95,6 @@ def game_over():
     # quit the program
     quit()
  
- 
 # Main Function
 while True:
      
@@ -142,29 +140,23 @@ while True:
                           random.randrange(1, (window_y//10)) * 10]     
     fruit_spawn = True
     game_window.fill(black)
-     
     for pos in snake_body:
         pygame.draw.rect(game_window, green,
                          pygame.Rect(pos[0], pos[1], 10, 10))
     pygame.draw.rect(game_window, white, pygame.Rect(
         fruit_position[0], fruit_position[1], 10, 10))
- 
     # Game Over conditions
     if snake_position[0] < 0 or snake_position[0] > window_x-10:
         game_over()
     if snake_position[1] < 0 or snake_position[1] > window_y-10:
         game_over()
- 
     # Touching the snake body
     for block in snake_body[1:]:
         if snake_position[0] == block[0] and snake_position[1] == block[1]:
             game_over()
- 
     # displaying score continuously
     show_score(1, white, 'times new roman', 20)
- 
     # Refresh game screen
     pygame.display.update()
- 
     # Frame Per Second /Refresh Rate
     fps.tick(snake_speed)
